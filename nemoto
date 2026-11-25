@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二人の理想のルームスタイル診断</title>
+<style>
+  body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    background-color: #f6f5f2;
+    color: #3a3a3a;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  }
+  h1 {
+    text-align: center;
+    color: #5c6b5e;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  p.intro {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 25px;
+  }
+  .question-box {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eae8e3;
+  }
+  .question-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2d3748;
+  }
+  label {
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
+    padding: 10px 14px;
+    background: #faf9f6;
+    border: 1px solid #eceae4;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  label:hover {
+    background: #eef2ee;
+    border-color: #a3b8a6;
+  }
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #5c6b5e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s;
+  }
+  button:hover {
+    background-color: #455247;
+  }
+  #result {
+    display: none;
+    margin-top: 30px;
+    padding: 25px;
+    background-color: #f2f5f2;
+    border: 2px solid #5c6b5e;
+    border-radius: 12px;
+  }
+  .result-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #3d4a3f;
+    margin-bottom: 10px;
+  }
+  .copy-btn {
+    background-color: #555;
+    font-size: 0.9rem;
+    padding: 12px;
+    margin-top: 15px;
+  }
+  .copy-btn:hover {
+    background-color: #333;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🛋️ 二人の理想のルームスタイル診断</h1>
+  <p class="intro">10個の質問に直感で答えるだけ！二人の感性にぴったりの「インテリア＆暮らしのテイスト」を診断します。</p>
+
+  <form id="quizForm">
+    <!-- Q1 -->
+    <div class="question-box">
+      <div class="question-title">Q1. 一番落ち着く部屋のベースカラーは？</div>
+      <label><input type="radio" name="q1" value="A" required> アイボリー・ベージュ・木目などの温かみのある色</label>
+      <label><input type="radio" name="q1" value="B"> ホワイト・グレー・ブラックなどのスッキリした無彩色</label>
+      <label><input type="radio" name="q1" value="C"> ブラウン・ネイビー・深緑などの落ち着いた深みのある色</label>
+      <label><input type="radio" name="q1" value="D"> イエロー・ブルー・テラコッタなど明るいアクセントカラー</label>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-box">
+      <div class="question-title">Q2. 休日に行きたい理想のカフェはどんな雰囲気？</div>
+      <label><input type="radio" name="q2" value="A" required> 観葉植物がたくさんある、木のぬくもり系カフェ</label>
+      <label><input type="radio" name="q2" value="B"> コンクリートやガラス張りの洗練された無機質カフェ</label>
+      <label><input type="radio" name="q2" value="C"> レトロな照明や革張りのソファがある純喫茶・古民家カフェ</label>
+      <label><input type="radio" name="q2" value="D"> アートやカラフルな雑貨が飾られた個性派・韓国風カフェ</label>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-box">
+      <div class="question-title">Q3. 家具や雑貨の素材で惹かれるのはどれ？</div>
+      <label><input type="radio" name="q3" value="A" required> 天然木、リネン（麻）、コットン、ラタン（籐）</label>
+      <label><input type="radio" name="q3" value="B"> ステンレス、ガラス、大理石調、マットな質感の金属</label>
+      <label><input type="radio" name="q3" value="C"> レザー（革）、アイアン（鉄）、真鍮、味のある陶器</label>
+      <label><input type="radio" name="q3" value="D"> プラスチック、アクリル、カラフルな磁器、ファブリック</label>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-box">
+      <div class="question-title">Q4. 家電やキッチンツールを選ぶときの基準は？</div>
+      <label><input type="radio" name="q4" value="A" required> 部屋に馴染むやさしいデザイン・コンパクトさ</label>
+      <label><input type="radio" name="q4" value="B"> 生活感が出ないスタイリッシュさ・最新スペック</label>
+      <label><input type="radio" name="q4" value="C"> 道具としての本格感・長く使って味が出るもの</label>
+      <label><input type="radio" name="q4" value="D"> 見た目が可愛い・置いておくだけで気分が上がるデザイン</label>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question-box">
+      <div class="question-title">Q5. 理想の食卓（テーブルコーディネート）は？</div>
+      <label><input type="radio" name="q5" value="A" required> 木のプレートや白いシンプルな器でほっこりカフェごはん</label>
+      <label><input type="radio" name="q5" value="B"> モノトーンやクリアガラスの器でレストラン風に</label>
+      <label><input type="radio" name="q5" value="C"> 作家ものの和食器や重厚感のあるお皿で居酒屋・ビストロ風に</label>
+      <label><input type="radio" name="q5" value="D"> 北欧柄やカラフルな色違いの食器で楽しく賑やかに</label>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question-box">
+      <div class="question-title">Q6. 部屋の照明の好みは？</div>
+      <label><input type="radio" name="q6" value="A" required> 自然光がたっぷり入る明るい空間＋間接照明</label>
+      <label><input type="radio" name="q6" value="B"> スポットライトやダウンライトでホテルのようにスッキリ</label>
+      <label><input type="radio" name="q6" value="C"> オレンジ色の温かい電球色・レトロなペンダントライト</label>
+      <label><input type="radio" name="q6" value="D"> デザイン性の高いユニークな形の照明やネオン・キャンドル</label>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question-box">
+      <div class="question-title">Q7. 二人の普段のファッションの傾向は？</div>
+      <label><input type="radio" name="q7" value="A" required> きれいめカジュアル・アースカラーや白シャツが多い</label>
+      <label><input type="radio" name="q7" value="B"> モノトーン・シンプルモード・無駄のないシルエット</label>
+      <label><input type="radio" name="q7" value="C"> アメカジ・トラッド・古着やデニムなど定番アイテム</label>
+      <label><input type="radio" name="q7" value="D"> ストリート・柄物・差し色を使った個性的なコーデ</label>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question-box">
+      <div class="question-title">Q8. 雑貨屋さんでつい手に取ってしまうものは？</div>
+      <label><input type="radio" name="q8" value="A" required> 香りもの（ディフューザー）、タオル、木製カトラリー</label>
+      <label><input type="radio" name="q8" value="B"> デザイン家電、スマートホームグッズ、グラス類</label>
+      <label><input type="radio" name="q8" value="C"> コーヒー・お酒グッズ、真鍮の小物、ヴィンテージ雑貨</label>
+      <label><input type="radio" name="q8" value="D"> ポップなマグカップ、アートポスター、ユニークな便利雑貨</label>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question-box">
+      <div class="question-title">Q9. 「暮らしの快適さ」で一番大事にしたいのは？</div>
+      <label><input type="radio" name="q9" value="A" required> 肌触りの良さや、自然体でリラックスできる空気感</label>
+      <label><input type="radio" name="q9" value="B"> 物が散らからない機能美と、非日常感のある洗練された空間</label>
+      <label><input type="radio" name="q9" value="C"> お気に入りの道具をメンテナンスしながら育てる楽しさ</label>
+      <label><input type="radio" name="q9" value="D"> 毎日ワクワクするような遊び心と自分たちらしさ</label>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question-box">
+      <div class="question-title">Q10. 憧れの「海外の暮らし」イメージに近いのは？</div>
+      <label><input type="radio" name="q10" value="A" required> 北欧（デンマーク・スウェーデン）のヒュッゲな暮らし</label>
+      <label><input type="radio" name="q10" value="B" > ニューヨークのモダンなペントハウス・ホテル暮らし</label>
+      <label><input type="radio" name="q10" value="C"> ロンドンやパリのアンティークなアパートメント暮らし</label>
+      <label><input type="radio" name="q10" value="D"> 西海岸や韓国のトレンド感あふれるポップな暮らし</label>
+    </div>
+
+    <button type="submit">診断結果を見る！</button>
+  </form>
+
+  <div id="result">
+    <div class="result-title" id="resultTitle"></div>
+    <p id="resultDesc"></p>
+    <p style="font-size: 0.85rem; color: #555;">▼ 診断結果をコピーしてシェアしよう！</p>
+    <button type="button" class="copy-btn" onclick="copyResult()">結果をコピーする</button>
+  </div>
+</div>
+
+<script>
+  const resultsData = {
+    A: {
+      title: "【北欧ナチュラル派】温もりと心地よさを愛する癒やし系カップル",
+      desc: "木のぬくもりや自然素材、やさしい色合いに囲まれた空間でこそリラックスできる二人。飾らない自然体の魅力があり、家に招かれた友人までホッとさせる居心地の良さを作るのが得意です。"
+    },
+    B: {
+      title: "【シンプルモダン派】洗練されたホテルライクを極めるスマートカップル",
+      desc: "無駄を削ぎ落としたスタイリッシュな空間と、機能美を愛する二人。生活感を見せないスマートな暮らし方が得意で、都会的でセンスの良いライフスタイルを築けるペアです。"
+    },
+    C: {
+      title: "【ヴィンテージ＆カフェ派】こだわりと深みを楽しむ大人カップル",
+      desc: "流行に流されず、長く使って味が出るものやストーリーのある道具を大切にする二人。おうちでのコーヒータイムや晩酌を極上の時間に変えられる、成熟した感性の持ち主です。"
+    },
+    D: {
+      title: "【ポップ＆アート派】遊び心と個性が光るクリエイティブカップル",
+      desc: "自分たちらしい色使いやユニークなデザインを取り入れて、毎日を楽しく彩れる二人。既成概念にとらわれない自由な発想で、見る人までワクワクさせる空間づくりが得意です。"
+    }
+  };
+
+  let currentResultText = "";
+
+  document.getElementById('quizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const scores = { A: 0, B: 0, C: 0, D: 0 };
+    const formData = new FormData(this);
+    
+    for (let value of formData.values()) {
+      scores[value]++;
+    }
+
+    let maxType = 'A';
+    let maxScore = -1;
+    for (const [type, score] of Object.entries(scores)) {
+      if (score > maxScore) {
+        maxScore = score;
+        maxType = type;
+      }
+    }
+
+    const res = resultsData[maxType];
+    document.getElementById('resultTitle').textContent = res.title;
+    document.getElementById('resultDesc').textContent = res.desc;
+    document.getElementById('result').style.display = 'block';
+    
+    document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+
+    // 暗号スコア付きコピーテキスト
+    currentResultText = `🛋️ 二人の理想のルームスタイル診断 🛋️\n${res.title}\n\n${res.desc}\n\n[Style Code: A${scores.A}-B${scores.B}-C${scores.C}-D${scores.D}]`;
+  });
+
+  function copyResult() {
+    navigator.clipboard.writeText(currentResultText).then(() => {
+      alert('診断結果をコピーしました！そのままLINEなどに貼り付けて送ってください。');
+    });
+  }
+</script>
+
+</body>
+</html>
